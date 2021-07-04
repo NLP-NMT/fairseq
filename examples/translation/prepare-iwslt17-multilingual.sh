@@ -38,27 +38,27 @@ VALID_SETS=(
 )
 
 # download and extract data
-for ((i=0;i<${#URLS[@]};++i)); do
-    ARCHIVE=$ORIG/${ARCHIVES[i]}
-    if [ -f "$ARCHIVE" ]; then
-        echo "$ARCHIVE already exists, skipping download"
-    else
-        URL=${URLS[i]}
-        wget -P "$ORIG" "$URL"
-        if [ -f "$ARCHIVE" ]; then
-            echo "$URL successfully downloaded."
-        else
-            echo "$URL not successfully downloaded."
-            exit 1
-        fi
-    fi
-    FILE=${ARCHIVE: -4}
-    if [ -e "$FILE" ]; then
-        echo "$FILE already exists, skipping extraction"
-    else
-        tar -C "$ORIG" -xzvf "$ARCHIVE"
-    fi
-done
+# for ((i=0;i<${#URLS[@]};++i)); do
+#     ARCHIVE=$ORIG/${ARCHIVES[i]}
+#     if [ -f "$ARCHIVE" ]; then
+#         echo "$ARCHIVE already exists, skipping download"
+#     else
+#         URL=${URLS[i]}
+#         wget -P "$ORIG" "$URL"
+#         if [ -f "$ARCHIVE" ]; then
+#             echo "$URL successfully downloaded."
+#         else
+#             echo "$URL not successfully downloaded."
+#             exit 1
+#         fi
+#     fi
+#     FILE=${ARCHIVE: -4}
+#     if [ -e "$FILE" ]; then
+#         echo "$FILE already exists, skipping extraction"
+#     else
+#         tar -C "$ORIG" -xzvf "$ARCHIVE"
+#     fi
+# done
 
 echo "pre-processing train data..."
 for SRC in "${SRCS[@]}"; do
